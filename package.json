@@ -1,0 +1,53 @@
+{
+  "name": "@integralhq/size-sdk",
+  "description": "An SDK for building applications on top of Integral SIZE.",
+  "license": "GPL-3.0-or-later",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IntegralHQ/Integral-SIZE-SDK.git"
+  },
+  "keywords": [
+    "integral",
+    "ethereum"
+  ],
+  "engines": {
+    "node": ">=10",
+    "yarn": "^1.17.3"
+  },
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "lint": "yarn lint:prettier --check && yarn lint:eslint",
+    "lint:fix": "yarn lint:prettier --write && yarn lint:eslint --fix",
+    "lint:eslint": "eslint './src/**/*.ts'",
+    "lint:prettier": "yarn prettier './src/**/*.ts'",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "ethers": "^5.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.0.3",
+    "eslint": "^7.30.0",
+    "prettier": "^2.3.2",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.5",
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1"
+  },
+  "bugs": {
+    "url": "https://github.com/IntegralHQ/Integral-SIZE-SDK/issues"
+  },
+  "homepage": "https://github.com/IntegralHQ/Integral-SIZE-SDK#readme",
+  "directories": {
+    "test": "test"
+  },
+  "author": ""
+}
