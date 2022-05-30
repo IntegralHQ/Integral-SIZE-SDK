@@ -33,11 +33,6 @@ export interface CallOptions {
   gasPrice?: BigNumber
 
   /**
-   * // TODO: add description
-   */
-  swapOnDeposit: boolean
-
-  /**
    * Slippage tolerance denominator. Default slippageToleranceDenominator = 1000.
    */
   slippageToleranceDenominator?: number
@@ -83,6 +78,7 @@ export abstract class TwapDelay {
    * @param output The exact output token, either Ether or an ERC-20
    * @param slippageTolerance How much the execution price is allowed to move unfavorably from the trade execution price.
    * @param options Options for the call parameters
+   * @returns Contract address, method name, calldata and value.
    */
   public static async getBuyCallParameters(
     provider: BaseProvider,
@@ -120,7 +116,7 @@ export abstract class TwapDelay {
           tokenOut: tokenOut.address,
           amountInMax: valueIn,
           amountOut: valueOut,
-          wrapUnwrap,
+          wrapUnwrap: wrapUnwrap,
           to: to,
           gasLimit: safeGasLimit,
           submitDeadline: nowSeconds + (options?.submitDeadline ?? DEFAULT_SETTINGS.submitDeadline),
@@ -139,6 +135,7 @@ export abstract class TwapDelay {
    * @param output The output token, either Ether or an ERC-20
    * @param slippageTolerance How much the execution price is allowed to move unfavorably from the trade execution price.
    * @param options Options for the call parameters
+   * @returns Contract address, method name, calldata and value
    */
   public static async getSellCallParameters(
     provider: BaseProvider,
@@ -176,7 +173,7 @@ export abstract class TwapDelay {
           tokenOut: tokenOut.address,
           amountIn: valueIn,
           amountOutMin: valueOut,
-          wrapUnwrap,
+          wrapUnwrap: wrapUnwrap,
           to: to,
           gasLimit: safeGasLimit,
           submitDeadline: nowSeconds + (options?.submitDeadline ?? DEFAULT_SETTINGS.submitDeadline),
@@ -195,6 +192,7 @@ export abstract class TwapDelay {
    * @param secondValue The second token to withdraw
    * @param liquidity
    * @param options Options for the call parameters
+   * @returns Contract address, method name, calldata and value
    */
   public static async getWithdrawCallParameters(
     provider: BaseProvider,
@@ -226,7 +224,7 @@ export abstract class TwapDelay {
           liquidity: liquidity,
           amount0Min: BigNumber.from(0),
           amount1Min: BigNumber.from(0),
-          unwrap,
+          unwrap: unwrap,
           to: to,
           gasLimit: safeGasLimit,
           submitDeadline: nowSeconds + (options?.submitDeadline ?? DEFAULT_SETTINGS.submitDeadline),
@@ -245,7 +243,9 @@ export abstract class TwapDelay {
    * @param secondValue The second token to deposit
    * @param slippageTolerance How much the execution price is allowed to move unfavorably from the trade execution price.
    * @param pair
+   * @param swapOnDeposit Whether to perform a swap on non-proportional deposits
    * @param options Options for the call parameters
+   * @returns Contract address, method name, calldata and value
    */
   public static async getDepositCallParameters(
     provider: BaseProvider,
@@ -255,6 +255,7 @@ export abstract class TwapDelay {
     secondValue: CurrencyValue,
     slippageTolerance: number,
     pair: Pair,
+    swapOnDeposit: boolean,
     options?: CallOptions
   ): Promise<{ contractAddress: string; methodName: string; calldata: string; value: BigNumber }> {
     const tokenA = toToken(firstValue.currency)
@@ -304,8 +305,8 @@ export abstract class TwapDelay {
               )
               .div(options?.depositSlippageDenominator ?? SETTINGS_DENOMINATORS.depositSlippageTolerance)
           ),
-          wrap,
-          swap: true,
+          wrap: wrap,
+          swap: swapOnDeposit,
           to: to,
           gasLimit: safeGasLimit,
           submitDeadline: nowSeconds + (options?.submitDeadline ?? DEFAULT_SETTINGS.submitDeadline),

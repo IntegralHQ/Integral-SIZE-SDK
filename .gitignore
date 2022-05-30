@@ -105,3 +105,9 @@ dist
 
 # Generated JS files
 /build
+
+# Docs
+/docs
+
+# DS Store
+.DS_Store

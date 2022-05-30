@@ -15,5 +15,13 @@
     "outDir": "./build"
   },
   "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "typedocOptions": {
+    "entryPoints": ["src"],
+    "out": "docs",
+    "exclude": "src/constants/*",
+    "hideLegend": true,
+    "hideGenerator": true,
+    "includeVersion" : true
+  }
 }

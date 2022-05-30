@@ -1,5 +1,7 @@
 import { ChainId } from './chains'
 
+export const ADDRESS_ZERO = '0x0000000000000000000000000000000000000000'
+
 export const MULTICALL_ADDRESS = {
   [ChainId.Mainnet]: '0xeefba1e63905ef1d7acba5a8513c70307c1ce441',
   [ChainId.Kovan]: '0x2cc8688c5f75e365aaeeb4ea8d6a480405a48d2a',
@@ -55,7 +57,6 @@ export const DEPRECATED_THREE_YEARS_STAKING_ADDRESS = {
 }
 
 // TOKENS
-export const ADDRESS_ZERO = '0x0000000000000000000000000000000000000000'
 
 export const INTEGRAL = {
   [ChainId.Mainnet]: '0xD502F487e1841Fdc805130e13eae80c61186Bc98',
@@ -111,13 +112,13 @@ export const CVX = {
   [ChainId.Ganache]: '',
 }
 
-// PAIRS
-
-export const WETH_WBTC = {
-  [ChainId.Mainnet]: '0x5dFAe56E344B18bC7cd3B8350721FfdD12Ff2b3C',
-  [ChainId.Kovan]: '0x04137adB16254857f1569b94382A04CAA1Dfe3c5',
-  [ChainId.Ganache]: '0x42E848b7F6bfaEB5a9a1937e418566BDA3352C33',
+export const SUSHI = {
+  [ChainId.Mainnet]: '0x6B3595068778DD592e39A122f4f5a5cF09C90fE2',
+  [ChainId.Kovan]: '0xA410B701b4e102bb66465C705640b2aD53Ba41E7',
+  [ChainId.Ganache]: '',
 }
+
+// PAIRS
 
 export const WETH_USDC = {
   [ChainId.Mainnet]: '0x2fe16Dd18bba26e457B7dD2080d5674312b026a2',
@@ -131,40 +132,8 @@ export const WETH_CVX = {
   [ChainId.Ganache]: '',
 }
 
-export const WETH_USDT = {
-  [ChainId.Mainnet]: '0x3eD27247A8abF40d3D85171536ea98e5eEd94F40',
-  [ChainId.Kovan]: '0xA639BC1c8B32eA5103B850d4664e89fF7CE97781',
-  [ChainId.Ganache]: '0x79CF3483A993832561f61f4d0B2B1edf4EBF08ba',
-}
-
-export const WETH_DAI = {
-  [ChainId.Mainnet]: '0x5FB51deDd29b8C065cA3Ac4545b6c58b635616C5',
-  [ChainId.Kovan]: '0x55AaAa1fD4247f25D92080CB2E6AfE15c9d73637',
-  [ChainId.Ganache]: '0x2F1e157D8aD8Effd02b409D74871f0871C3C2E15',
-}
-
-export const WETH_LINK = {
-  [ChainId.Mainnet]: '0x4370CFD2c62b6E2900D04af97c4D9552484C0e48',
-  [ChainId.Kovan]: '0x49988422155D981f43A795252fd15398fBF85075',
-  [ChainId.Ganache]: '0x3Ff7491b4Af201c48f7da81928eC8e275Cc0cD23',
-}
-
-export const DAI_USDC = {
-  [ChainId.Mainnet]: '0x01d9984489bD4c5f372a6e6Eca1F22c27A77e355',
-  [ChainId.Kovan]: '0xda70F0f062F79C7d112b272F171b9a0e2Ffd802C',
+export const WETH_SUSHI = {
+  [ChainId.Mainnet]: '0xD66f214fB49f81Ac5610e0339A351D7e1c67c35e',
+  [ChainId.Kovan]: '0xf30246979bdf0f1Ce8E1337B4E3c951dD7C69Bb7',
   [ChainId.Ganache]: '',
 }
-
-export const DAI_USDT = {
-  [ChainId.Mainnet]: '0xcddD3B9EACce44DDf9d5748C8e8b5F8d630f17EB',
-  [ChainId.Kovan]: '0x138Dba02F481A637A1F586D737e7A9896191b267',
-  [ChainId.Ganache]: '',
-}
-
-export const USDC_USDT = {
-  [ChainId.Mainnet]: '0x3fFecc12a6B46C3Aa32aEA38ac34EfbB6C9B6052',
-  [ChainId.Kovan]: '0xcE2951067a1b4479809adED7eFE7061CF84bFff4',
-  [ChainId.Ganache]: '',
-}
-
-export const UNISWAP_V3_BASED_PAIRS = [DAI_USDC, DAI_USDT, USDC_USDT]

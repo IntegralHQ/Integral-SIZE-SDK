@@ -1,5 +1,5 @@
 import { Currency, Token, isToken } from '../model'
-import { WBTC, WETH, USDC, USDT, DAI, LINK, CRV } from './addresses'
+import { WBTC, WETH, USDC, USDT, DAI, LINK, CRV, CVX, SUSHI } from './addresses'
 import { ChainId } from './chains'
 
 export const Ether = new Currency(ChainId.Mainnet, 'Ether', 'ETH', 18)
@@ -10,8 +10,10 @@ export const Dai = new Token(ChainId.Mainnet, DAI[ChainId.Mainnet], 'Dai', 'DAI'
 export const Weth = new Token(ChainId.Mainnet, WETH[ChainId.Mainnet], 'Wrapped Ether', 'WETH', 18)
 export const Link = new Token(ChainId.Mainnet, LINK[ChainId.Mainnet], 'ChainLink Token', 'LINK', 18)
 export const Crv = new Token(ChainId.Mainnet, CRV[ChainId.Mainnet], 'Curve DAO Token', 'CRV', 18)
+export const Cvx = new Token(ChainId.Mainnet, CVX[ChainId.Mainnet], 'Convex Token', 'CVX', 18)
+export const Sushi = new Token(ChainId.Mainnet, SUSHI[ChainId.Mainnet], 'SushiToken', 'SUSHI', 18)
 
-export const MAINNET_CURRENCIES = [Ether, Wbtc, Usdc, Usdt, Dai, Link, Crv, Weth]
+export const MAINNET_CURRENCIES = [Ether, Wbtc, Usdc, Usdt, Dai, Link, Crv, Weth, Cvx, Sushi]
 
 export const KovanEther = new Currency(ChainId.Kovan, 'Kovan Ether', 'KETH', 18)
 export const KovanWeth = new Token(ChainId.Kovan, WETH[ChainId.Kovan], 'Wrapped Kovan Ether', 'WETH', 18)
@@ -21,6 +23,8 @@ export const KovanTetherUSD = new Token(ChainId.Kovan, USDT[ChainId.Kovan], 'Tet
 export const KovanDai = new Token(ChainId.Kovan, DAI[ChainId.Kovan], 'Dai Stablecoin', 'DAI', 18)
 export const KovanLink = new Token(ChainId.Kovan, LINK[ChainId.Kovan], 'ChainLink Token', 'LINK', 18)
 export const KovanCrv = new Token(ChainId.Kovan, CRV[ChainId.Kovan], 'Curve DAO Token', 'CRV', 18)
+export const KovanCvx = new Token(ChainId.Kovan, CVX[ChainId.Kovan], 'Convex Token', 'CVX', 18)
+export const KovanSushi = new Token(ChainId.Kovan, SUSHI[ChainId.Kovan], 'SushiToken', 'SUSHI', 18)
 
 export const KOVAN_CURRENCIES = [
   KovanEther,
@@ -31,6 +35,8 @@ export const KOVAN_CURRENCIES = [
   KovanDai,
   KovanLink,
   KovanCrv,
+  KovanCvx,
+  KovanSushi,
 ]
 
 export const GanacheEther = new Currency(ChainId.Ganache, 'Ganache Ether', 'GETH', 18)

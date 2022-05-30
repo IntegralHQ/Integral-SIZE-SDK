@@ -2,7 +2,7 @@
   "name": "@integralhq/size-sdk",
   "description": "An SDK for building applications on top of Integral SIZE.",
   "license": "GPL-3.0-or-later",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/IntegralHQ/Integral-SIZE-SDK.git"
@@ -20,6 +20,7 @@
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build",
+    "docs": "typedoc",
     "lint": "yarn lint:prettier --check && yarn lint:eslint",
     "lint:fix": "yarn lint:prettier --write && yarn lint:eslint --fix",
     "lint:eslint": "eslint './src/**/*.ts'",
@@ -40,7 +41,8 @@
     "ts-node": "^10.0.0",
     "typescript": "^4.3.5",
     "chai": "^4.2.0",
-    "mocha": "^8.2.1"
+    "mocha": "^8.2.1",
+    "typedoc": "^0.22.15"
   },
   "bugs": {
     "url": "https://github.com/IntegralHQ/Integral-SIZE-SDK/issues"
