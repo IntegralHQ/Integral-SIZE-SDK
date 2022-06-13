@@ -2,7 +2,7 @@
   "name": "@integralhq/size-sdk",
   "description": "An SDK for building applications on top of Integral SIZE.",
   "license": "GPL-3.0-or-later",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/IntegralHQ/Integral-SIZE-SDK.git"
@@ -20,6 +20,7 @@
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build",
+    "publish-public": "npm publish --access public",
     "docs": "typedoc",
     "lint": "yarn lint:prettier --check && yarn lint:eslint",
     "lint:fix": "yarn lint:prettier --write && yarn lint:eslint --fix",

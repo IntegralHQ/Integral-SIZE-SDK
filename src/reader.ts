@@ -15,7 +15,7 @@ export abstract class TwapReader {
 
   /**
    * Returns the pair for given tokens.
-   * @param provider
+   * @param provider A blockchain network connection provider
    * @param chainId Supported chains: Mainnet, Kovan
    * @param currencyA The first token in pair
    * @param currencyB The second token in pair

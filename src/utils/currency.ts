@@ -1,9 +1,44 @@
-import { ChainId, TOKENS, NATIVE_CURRENCY, WRAPPED_ETHER } from '../constants'
+import { BaseProvider } from '@ethersproject/providers'
+import { ChainId, NATIVE_CURRENCY, WETH } from '../constants'
+import { Cache, Token } from '../model'
+import { TwapPair } from '../pair'
 
-export function getCurrency(chainId: ChainId, symbolOrAddress: string) {
-  if (symbolOrAddress.toLowerCase() === NATIVE_CURRENCY[chainId].symbol.toLowerCase()) {
-    return WRAPPED_ETHER[chainId]
+/**
+ * Returns a Token object for given ERC20 token address or ETH currency symbol
+ * @param provider
+ * @param chainId Supported chains: Mainnet, Kovan
+ * @param tokenAddressOrSymbol ERC20 token address or ETH currency symbol
+ * @param cache
+ * @returns Token object
+ */
+export async function getToken(
+  provider: BaseProvider,
+  chainId: ChainId,
+  tokenAddressOrSymbol: string,
+  cache?: Cache
+): Promise<Token> {
+  let tokenAddress = null
+  if (tokenAddressOrSymbol.toLowerCase() === NATIVE_CURRENCY[chainId].symbol.toLowerCase()) {
+    tokenAddress = WETH[chainId].toLowerCase()
   } else {
-    return TOKENS[chainId].find((token) => symbolOrAddress.toLowerCase() === token.address.toLowerCase())
+    tokenAddress = tokenAddressOrSymbol.toLowerCase()
+  }
+
+  if (cache) {
+    const key = `getToken/${tokenAddress}`
+    const token = await cache.get(key)
+    if (token) {
+      return JSON.parse(token)
+    }
+  }
+
+  try {
+    const token = await TwapPair.getToken(provider, chainId, tokenAddress)
+    if (token && cache) {
+      await cache.set(`getToken/${token.address}`, JSON.stringify(token))
+    }
+    return token
+  } catch (error) {
+    throw new Error(`Cannot find token: ${tokenAddress} on ${ChainId[chainId]}`)
   }
 }

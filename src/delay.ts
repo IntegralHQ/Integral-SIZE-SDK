@@ -71,7 +71,7 @@ export abstract class TwapDelay {
 
   /**
    * Produces the contract address and on-chain method name to call and the hex encoded parameters to pass as arguments for a given buy call.
-   * @param provider
+   * @param provider A blockchain network connection provider
    * @param chainId Supported chains: Mainnet, Kovan
    * @param to The account that should receive the output.
    * @param input The input token, either Ether or an ERC-20
@@ -128,7 +128,7 @@ export abstract class TwapDelay {
 
   /**
    * Produces the contract address and on-chain method name to call and the hex encoded parameters to pass as arguments for a given sell call.
-   * @param provider
+   * @param provider A blockchain network connection provider
    * @param chainId Supported chains: Mainnet, Kovan
    * @param to The account that should receive the output.
    * @param input The exact input token, either Ether or an ERC-20
@@ -185,7 +185,7 @@ export abstract class TwapDelay {
 
   /**
    * Produces the contract address and on-chain method name to call and the hex encoded parameters to pass as arguments for a given withdraw call.
-   * @param provider
+   * @param provider A blockchain network connection provider
    * @param chainId Supported chains: Mainnet, Kovan
    * @param to The account that should receive the output.
    * @param firstValue The first token to withdraw
@@ -236,7 +236,7 @@ export abstract class TwapDelay {
 
   /**
    * Produces the contract address and on-chain method name to call and the hex encoded parameters to pass as arguments for a given deposit call.
-   * @param provider
+   * @param provider A blockchain network connection provider
    * @param chainId Supported chains: Mainnet, Kovan
    * @param to The account that should receive the output
    * @param firstValue The first token to deposit
@@ -318,7 +318,7 @@ export abstract class TwapDelay {
 
   /**
    * Returns the gas price
-   * @param provider
+   * @param provider A blockchain network connection provider
    * @param chainId Supported chains: Mainnet, Kovan
    * @returns Gas price
    */
@@ -337,7 +337,7 @@ export abstract class TwapDelay {
 
   /**
    * Returns the order statuses for given order ids.
-   * @param provider
+   * @param provider A blockchain network connection provider
    * @param chainId Supported chains: Mainnet, Kovan
    * @param orderIds Order ids array
    * @returns Order statuses
@@ -369,7 +369,7 @@ export abstract class TwapDelay {
 
   /**
    * Returns the order status for given order id.
-   * @param provider
+   * @param provider A blockchain network connection provider
    * @param chainId Supported chains: Mainnet, Kovan
    * @param orderId Id of the order
    * @returns Order status

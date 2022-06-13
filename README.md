@@ -25,12 +25,12 @@ Let's say you want to **sell** 1 WETH for USDC. The easies way to prepare data f
 
 ```typescript
 import { BigNumber, utils } from 'ethers'
-import { ChainId, TwapDelay, CurrencyValue, getCurrency, getProvider } from '@integralhq/size-sdk'
+import { ChainId, TwapDelay, CurrencyValue, getToken, getProvider } from '@integralhq/size-sdk'
 
 const provider = getProvider(ChainId.Mainnet, {})
 const receiver = '0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c4365'
-const usdc = getCurrency(ChainId.Mainnet, '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48') // USDC address on Ethereum Mainnet
-const weth = getCurrency(ChainId.Mainnet, '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2') // WETH address on Ethereum Mainnet
+const usdc = await getToken(provider, ChainId.Mainnet, '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48') // USDC address on Ethereum Mainnet
+const weth = await getToken(provider, ChainId.Mainnet, '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2') // WETH address on Ethereum Mainnet
 const input = new CurrencyValue(weth, utils.parseEther('1.0')) // 1 WETH
 const output = new CurrencyValue(usdc, utils.parseUnits('2000', usdc.decimals)) // 2000 USDC
 const slippageTolerance = 20 // 2%
@@ -49,12 +49,12 @@ Let's say you want to **buy** 1 WETH for USDC. The easies way to prepare data fo
 
 ```typescript
 import { BigNumber, utils } from 'ethers'
-import { ChainId, TwapDelay, CurrencyValue, getCurrency, getProvider } from '@integralhq/size-sdk'
+import { ChainId, TwapDelay, CurrencyValue, getToken, getProvider } from '@integralhq/size-sdk'
 
 const provider = getProvider(ChainId.Mainnet, {})
 const receiver = '0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c4365'
-const usdc = getCurrency(ChainId.Mainnet, '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48') // USDC address on Ethereum Mainnet
-const weth = getCurrency(ChainId.Mainnet, '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2') // WETH address on Ethereum Mainnet
+const usdc = await getToken(provider, ChainId.Mainnet, '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48') // USDC address on Ethereum Mainnet
+const weth = await getToken(provider, ChainId.Mainnet, '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2') // WETH address on Ethereum Mainnet
 const input = new CurrencyValue(usdc, utils.parseUnits('2000', usdc.decimals)) // 2000 USDC
 const output = new CurrencyValue(weth, utils.parseEther('1.0')) // 1 WETH
 const slippageTolerance = 5 // 0.5%
@@ -77,11 +77,11 @@ To get a `Pair` address, simply call `getPairAddress` function from `TwapFactory
 The order of currencies passed in the call does not matter. There is only one pair for specific 2 currencies.
 
 ```typescript
-import { ChainId, TwapFactory, getCurrency, getProvider } from '@integralhq/size-sdk'
+import { ChainId, TwapFactory, getToken, getProvider } from '@integralhq/size-sdk'
 
 const provider = getProvider(ChainId.Mainnet, {})
-const first = getCurrency(ChainId.Mainnet, '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48') // USDC address on Ethereum Mainnet
-const second = getCurrency(ChainId.Mainnet, '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2') // WETH address on Ethereum Mainnet
+const first = await getToken(provider, ChainId.Mainnet, '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48') // USDC address on Ethereum Mainnet
+const second = await getToken(provider, ChainId.Mainnet, '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2') // WETH address on Ethereum Mainnet
 
 const pairAddress = await TwapFactory.getPairAddress(provider, ChainId.Mainnet, first, second)
 ```
@@ -90,11 +90,11 @@ To get a `Pair`, call `getPair` function from `TwapReader`. This method will mak
 The order of currencies passed in the call does not matter. There is only one pair for specific 2 currencies.
 
 ```typescript
-import { ChainId, TwapReader, getCurrency, getProvider } from '@integralhq/size-sdk'
+import { ChainId, TwapReader, getToken, getProvider } from '@integralhq/size-sdk'
 
 const provider = getProvider(ChainId.Mainnet, {})
-const first = getCurrency(ChainId.Mainnet, '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48') // USDC address on Ethereum Mainnet
-const second = getCurrency(ChainId.Mainnet, '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2') // WETH address on Ethereum Mainnet
+const first = await getToken(provider, ChainId.Mainnet, '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48') // USDC address on Ethereum Mainnet
+const second = await getToken(provider, ChainId.Mainnet, '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2') // WETH address on Ethereum Mainnet
 
 const pair = await TwapReader.getPair(provider, ChainId.Mainnet, first, second)
 ```

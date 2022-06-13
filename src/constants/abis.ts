@@ -17,9 +17,17 @@ export const ERC20_ABI = [
   'function transferFrom(address from, address to, uint256 value) returns(bool)',
 ]
 
-export const PAIR_ABI = ['function oracle() view returns(address)']
+export const PAIR_ABI = [
+  'function oracle() external view returns (address)',
+  'function token0() external view returns (address)',
+  'function token1() external view returns (address)',
+]
 
-export const ORACLE_ABI = ['function uniswapPair() view returns(address)']
+export const ORACLE_ABI = [
+  'function uniswapPair() view returns(address)',
+  'function xDecimals() external view returns (uint8)',
+  'function yDecimals() external view returns (uint8)',
+]
 
 export const UNISWAP_V2_PAIR_ABI = [
   'function getReserves() view returns(uint112 _reserve0, uint112 _reserve1, uint32 _blockTimestampLast)',
@@ -33,7 +41,11 @@ export const READER_ABI = [
   'function getPairParameters(address pairAddress) view returns(bool exists, uint112 reserve0, uint112 reserve1, uint256 price, uint256 mintFee, uint256 burnFee, uint256 swapFee)',
 ]
 
-export const FACTORY_ABI = ['function getPair(address tokenA, address tokenB) view returns(address pair)']
+export const FACTORY_ABI = [
+  'function getPair(address tokenA, address tokenB) view returns(address pair)',
+  'function allPairsLength() view returns(uint256)',
+  'function allPairs(uint256) external view returns (address pair)',
+]
 
 export const MULTICALL_ABI = [
   'function aggregate(tuple(address target, bytes callData)[] calls) view returns (uint256 blockNumber, bytes[] returnData)',

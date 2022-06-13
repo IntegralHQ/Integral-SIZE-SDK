@@ -16,11 +16,11 @@ describe('TwapReader', () => {
         KovanUSDCoin,
         KovanEther
       )
-      
+
       // Assert
-      expect(pair?.address).to.eq(WETH_USDC[ChainId.Kovan])
-      expect(pair?.getToken0Address()).to.eq(USDC[ChainId.Kovan])
-      expect(pair?.getToken1Address()).to.eq(WETH[ChainId.Kovan])
+      expect(pair?.address).to.eq(WETH_USDC[ChainId.Kovan].toLowerCase())
+      expect(pair?.getToken0Address().toLowerCase()).to.eq(USDC[ChainId.Kovan].toLowerCase())
+      expect(pair?.getToken1Address().toLowerCase()).to.eq(WETH[ChainId.Kovan].toLowerCase())
     })
 
     it('returns undefined for not existing LINK-WBTC pair', async () => {
